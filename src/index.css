@@ -1,0 +1,208 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Space+Grotesk:wght@300..700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 210 20% 98%;
+    --foreground: 220 25% 10%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 220 25% 10%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 25% 10%;
+
+    --primary: 152 58% 38%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 210 18% 94%;
+    --secondary-foreground: 220 25% 10%;
+
+    --muted: 210 18% 96%;
+    --muted-foreground: 220 10% 46%;
+
+    --accent: 152 40% 94%;
+    --accent-foreground: 152 58% 28%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --success: 152 58% 38%;
+    --success-foreground: 0 0% 100%;
+
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 100%;
+
+    --income: 152 58% 38%;
+    --expense: 0 72% 51%;
+
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 152 58% 38%;
+
+    --radius: 0.75rem;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 152 58% 38%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 152 40% 94%;
+    --sidebar-accent-foreground: 152 58% 28%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 152 58% 38%;
+
+    --font-heading: 'Space Grotesk', sans-serif;
+    --font-body: 'DM Sans', sans-serif;
+  }
+
+  .dark {
+    --background: 220 25% 6%;
+    --foreground: 210 20% 95%;
+
+    --card: 220 20% 10%;
+    --card-foreground: 210 20% 95%;
+
+    --popover: 220 20% 10%;
+    --popover-foreground: 210 20% 95%;
+
+    --primary: 152 58% 45%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 220 15% 16%;
+    --secondary-foreground: 210 20% 95%;
+
+    --muted: 220 15% 16%;
+    --muted-foreground: 220 10% 55%;
+
+    --accent: 152 30% 15%;
+    --accent-foreground: 152 58% 55%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 220 15% 18%;
+    --input: 220 15% 18%;
+    --ring: 152 58% 45%;
+    --sidebar-background: 220 25% 6%;
+    --sidebar-foreground: 210 20% 95%;
+    --sidebar-primary: 152 58% 45%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 152 30% 15%;
+    --sidebar-accent-foreground: 152 58% 55%;
+    --sidebar-border: 220 15% 18%;
+    --sidebar-ring: 152 58% 45%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+  }
+}
+
+@layer utilities {
+  .font-heading {
+    font-family: var(--font-heading);
+  }
+  .font-body {
+    font-family: var(--font-body);
+  }
+
+  .animate-float-slow {
+    animation: float-slow 6s ease-in-out infinite;
+  }
+
+  .animate-float-delay {
+    animation: float-slow 7s ease-in-out infinite;
+    animation-delay: 1.4s;
+  }
+
+  .animate-glow-pulse {
+    animation: glow-pulse 3.6s ease-in-out infinite;
+  }
+
+  .animated-chart-bar {
+    animation: chart-bar 2.8s ease-in-out infinite alternate;
+    transform-origin: bottom;
+  }
+
+  .animated-chart-line {
+    stroke-dasharray: 620;
+    stroke-dashoffset: 620;
+    animation: chart-line 3.4s ease-in-out infinite;
+  }
+
+  .ticker-track {
+    animation: ticker-scroll 22s linear infinite;
+  }
+
+  /* Painel: faixa de câmbio (loop suave; pausa ao passar o mouse) */
+  .panel-currency-ticker-track {
+    animation: ticker-scroll 52s linear infinite;
+  }
+
+  .panel-currency-ticker-track:hover {
+    animation-play-state: paused;
+  }
+}
+
+@keyframes float-slow {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-14px);
+  }
+}
+
+@keyframes glow-pulse {
+  0%, 100% {
+    opacity: 0.55;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.95;
+    transform: scale(1.06);
+  }
+}
+
+@keyframes chart-bar {
+  0% {
+    transform: scaleY(0.55);
+  }
+  100% {
+    transform: scaleY(1);
+  }
+}
+
+@keyframes chart-line {
+  0% {
+    stroke-dashoffset: 620;
+  }
+  45%, 70% {
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dashoffset: -620;
+  }
+}
+
+@keyframes ticker-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
